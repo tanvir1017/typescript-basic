@@ -1,0 +1,23 @@
+{
+  "name": "typescript-basic",
+  "version": "1.0.0",
+  "description": "Learning the basic typescript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanvir1017/typescript-basic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanvir1017/typescript-basic/issues"
+  },
+  "homepage": "https://github.com/tanvir1017/typescript-basic#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
