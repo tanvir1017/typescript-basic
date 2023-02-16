@@ -19,5 +19,6 @@
   "homepage": "https://github.com/tanvir1017/typescript-basic#readme",
   "devDependencies": {
     "typescript": "^4.9.5"
-  }
+  },
+  "dependencies": {}
 }

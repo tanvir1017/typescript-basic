@@ -38,9 +38,9 @@ let person = {
 person.name = "Jabed";
 console.log(person);
 
-//info---------------------------------------------------------------
+//?---------------------------------------------------------------
 // todo : Explicit & union type
-//info--------------------------------------------------------------
+//?--------------------------------------------------------------
 
 // ! So when we set the value or variable data type it's called Explicit type & When we set a variable type or array or object twice type like, an array can be number or string. it's called Union. let's see an example
 
@@ -91,11 +91,11 @@ studentInfo = {
 console.log(studentInfo);
 
 // ----------------------------------------------------------------------------------
-// info 🚀 Dynamic or any type
+// ? 🚀 Dynamic or any type
 // ----------------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------------
-//  info🚀 Function type
+//  ? 🚀 Function type
 // ----------------------------------------------------------------------------------
 // todo : function type declaration should be start with Uppercase word like
 // ! const myFunc:Function = () => {}
@@ -132,7 +132,7 @@ const voidFunctionExample = (
 console.log(voidFunctionExample("Tanvir", "Tawhid", 2023, false));
 
 // ----------------------------------------------------------------------------------
-//  info🚀 Type alias
+//  ? 🚀 Type alias
 // ----------------------------------------------------------------------------------
 
 // todo : type alias is like a nick name for a man. In javascript we can define a set of type by ➡️ type aliases and use it as an variable or type nick name(for better understand). Type alias start with type word. seen an example:
@@ -160,7 +160,7 @@ exploreUserInfo("33kjk23", {
 });
 
 // ----------------------------------------------------------------------------------
-//  info🚀 Function signature
+//  ? 🚀 Function signature
 // ----------------------------------------------------------------------------------
 // ! function signature is kind of to tell the function by declaring that it will return something(string | number | boolean | any | void) & you can set the parameters type by the signature. Let me give an example to show what exactly function signature is?
 
@@ -219,30 +219,17 @@ players.push(Mash, Shaki, Miraj);
 console.log(players);
 Mash.play();
 
+import { isEmploy } from "./interface/interface";
 // ----------------------------------------------------------------------------------
-//  info🚀 Access modifier in class
+//  ? 🚀 Access modifier in class
 // ----------------------------------------------------------------------------------
 // ! access modifier in class means you can explicitly set the classes insider property access type. In javaScript the give 3 types of access modifier in class they are        1️⃣ private 2️⃣ public(by default every properties are in Public state)3️⃣ readonly
 
 // todo : when we set a the access modifier you can't reassign any properties by the access modifier type. For an example if you set any properties access as a private you can't access the class properties out side of the class, you have to use it within class, Also you have got some benefit's like you will not have to do the things like re-set the properties in the constructor by "this" method. You can directly set the properties access by constructor parameters
 
 // ! an example with typescript class access modifier.
-class Students {
-  constructor(
-    readonly id: number,
-    readonly name: string,
-    readonly email: string,
-    readonly department: string,
-    private age: number,
-    private phone: number,
-    public parentsInfo: {
-      readonly fatherName: string;
-      readonly motherName: string;
-      readonly parentsPhone: number | string;
-    }
-  ) {}
-}
 
+import { Employee, Students } from "./modules/classess.js";
 const Mariyan = new Students(
   66101,
   "Mariyan Akter Suchi",
@@ -275,3 +262,66 @@ const Aysha = new Students(
 let studentsArray: Students[] = [];
 studentsArray.push(Mariyan, Aysha);
 console.log(studentsArray);
+
+// ----------------------------------------------------------------------------------
+//  ? 🚀 Module way code with typescript
+// ----------------------------------------------------------------------------------
+// ! we can work in type script with module system. For work with module system in typescript we have to do 🔢 things: 1️⃣ make an folder/file in the src and export from here and import from here where you want to use that2️⃣Tell the <script type="module" /> in index.html. That we created before 3️⃣ config tsconfig.js with module="es2015"(cz, from 2015 js and browser support moduler system.) 4️⃣ when import the file from export folder replace ts to js.
+
+// example given top of the site
+
+// @ Interface. Interface is like type aliases but in type alias we define data type as a variable & Interface is not work like that. So let's see an example:
+
+interface reactAngleOptions {
+  width: number;
+  height: number;
+}
+
+function drawRectangle(options: reactAngleOptions) {
+  const width = options.width;
+  const height = options.height;
+
+  return width * height;
+}
+const reactAngleOptionsVar = {
+  width: 30,
+  height: 40,
+  length: 50,
+};
+
+// ! passed by reference
+// ! when we passed an object as argument directly typescript will not accept extraValue that given directly. If you passed the object as a reference value, then typescript will just check that the structured value is available or not. If structure value is available then you will give anything as extra value, typescript don't care. But if structure value isn't available then typescript will give warning,
+console.log(drawRectangle(reactAngleOptionsVar));
+
+//todo : let's talk about  module type interface in classes.
+// ? So what interface is actually? Interface is nothing but a structure of a class or object. We can create an interface and implements it in classes as class structure. ⚠️ One more thing is interface is not allow any private value from class.
+
+let Tanvir1017 = new Employee(
+  +8801784070569,
+  "Tanvir Hossain",
+  {
+    age: 20,
+    employId: "tanvir101723",
+    joiningDate: "01 may 2023",
+    photo: "https://github.com/tanvir1017",
+  },
+  "Software Engineer",
+  "Web application developer"
+);
+let siffahim = new Employee(
+  +880150000000,
+  "Safiul islam fahim",
+  {
+    age: 21,
+    employId: "siffahim2523",
+    joiningDate: "01 may 2023",
+    photo: "https://github.com/siffahim",
+  },
+  "Software Engineer",
+  "Web application developer"
+);
+
+let employees: isEmploy[] = [];
+employees.push({ ...Tanvir1017 });
+employees.push({ ...siffahim });
+console.log(employees);

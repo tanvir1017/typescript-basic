@@ -1,4 +1,3 @@
-"use strict";
 const check = "checking...";
 console.log(check);
 // todo : ☑️Inference checking, that means you can't redeclare variable type string into number. Inference error occurred when you declare variable and define it at the same time
@@ -26,9 +25,9 @@ let person = {
 // person["name"] = 35; // ⚠️ warn that you can't assign number type in string
 person.name = "Jabed";
 console.log(person);
-//info---------------------------------------------------------------
+//?---------------------------------------------------------------
 // todo : Explicit & union type
-//info--------------------------------------------------------------
+//?--------------------------------------------------------------
 // ! So when we set the value or variable data type it's called Explicit type & When we set a variable type or array or object twice type like, an array can be number or string. it's called Union. let's see an example
 //todo : Explicit array
 let exArray = [];
@@ -60,10 +59,10 @@ studentInfo = {
 };
 console.log(studentInfo);
 // ----------------------------------------------------------------------------------
-// info 🚀 Dynamic or any type
+// ? 🚀 Dynamic or any type
 // ----------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------
-//  info🚀 Function type
+//  ? 🚀 Function type
 // ----------------------------------------------------------------------------------
 // todo : function type declaration should be start with Uppercase word like
 // ! const myFunc:Function = () => {}
@@ -86,7 +85,7 @@ const voidFunctionExample = (a, b, c, d) => {
 };
 console.log(voidFunctionExample("Tanvir", "Tawhid", 2023, false));
 // ----------------------------------------------------------------------------------
-//  info🚀 Type alias
+//  ? 🚀 Type alias
 // ----------------------------------------------------------------------------------
 // todo : type alias is like a nick name for a man. In javascript we can define a set of type by ➡️ type aliases and use it as an variable or type nick name(for better understand). Type alias start with type word. seen an example:
 // ! let see: type stringOrNumber = string | num
@@ -103,7 +102,7 @@ exploreUserInfo("33kjk23", {
     age: 20,
 });
 // ----------------------------------------------------------------------------------
-//  info🚀 Function signature
+//  ? 🚀 Function signature
 // ----------------------------------------------------------------------------------
 // ! function signature is kind of to tell the function by declaring that it will return something(string | number | boolean | any | void) & you can set the parameters type by the signature. Let me give an example to show what exactly function signature is?
 let myFuncSignature;
@@ -147,22 +146,12 @@ players.push(Mash, Shaki, Miraj);
 console.log(players);
 Mash.play();
 // ----------------------------------------------------------------------------------
-//  info🚀 Access modifier in class
+//  ? 🚀 Access modifier in class
 // ----------------------------------------------------------------------------------
 // ! access modifier in class means you can explicitly set the classes insider property access type. In javaScript the give 3 types of access modifier in class they are        1️⃣ private 2️⃣ public(by default every properties are in Public state)3️⃣ readonly
 // todo : when we set a the access modifier you can't reassign any properties by the access modifier type. For an example if you set any properties access as a private you can't access the class properties out side of the class, you have to use it within class, Also you have got some benefit's like you will not have to do the things like re-set the properties in the constructor by "this" method. You can directly set the properties access by constructor parameters
 // ! an example with typescript class access modifier.
-class Students {
-    constructor(id, name, email, department, age, phone, parentsInfo) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.department = department;
-        this.age = age;
-        this.phone = phone;
-        this.parentsInfo = parentsInfo;
-    }
-}
+import { Employee, Students } from "./modules/classess.js";
 const Mariyan = new Students(66101, "Mariyan Akter Suchi", "mariyan@gmail.com", "CST", 21, +8801748457841, {
     fatherName: "Jana nai",
     motherName: "Tao jana nai",
@@ -177,3 +166,34 @@ const Aysha = new Students(66102, "Aysha akter(cr)", "ayshaakter@gmail.com", "CS
 let studentsArray = [];
 studentsArray.push(Mariyan, Aysha);
 console.log(studentsArray);
+function drawRectangle(options) {
+    const width = options.width;
+    const height = options.height;
+    return width * height;
+}
+const reactAngleOptionsVar = {
+    width: 30,
+    height: 40,
+    length: 50,
+};
+// ! passed by reference
+// ! when we passed an object as argument directly typescript will not accept extraValue that given directly. If you passed the object as a reference value, then typescript will just check that the structured value is available or not. If structure value is available then you will give anything as extra value, typescript don't care. But if structure value isn't available then typescript will give warning,
+console.log(drawRectangle(reactAngleOptionsVar));
+//todo : let's talk about  module type interface in classes.
+// ? So what interface is actually? Interface is nothing but a structure of a class or object. We can create an interface and implements it in classes as class structure. ⚠️ One more thing is interface is not allow any private value from class.
+let Tanvir1017 = new Employee(+8801784070569, "Tanvir Hossain", {
+    age: 20,
+    employId: "tanvir101723",
+    joiningDate: "01 may 2023",
+    photo: "https://github.com/tanvir1017",
+}, "Software Engineer", "Web application developer");
+let siffahim = new Employee(+880150000000, "Safiul islam fahim", {
+    age: 21,
+    employId: "siffahim2523",
+    joiningDate: "01 may 2023",
+    photo: "https://github.com/siffahim",
+}, "Software Engineer", "Web application developer");
+let employees = [];
+employees.push(Object.assign({}, Tanvir1017));
+employees.push(Object.assign({}, siffahim));
+console.log(employees);
