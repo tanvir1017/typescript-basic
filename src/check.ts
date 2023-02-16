@@ -325,3 +325,92 @@ let employees: isEmploy[] = [];
 employees.push({ ...Tanvir1017 });
 employees.push({ ...siffahim });
 console.log(employees);
+
+// TODO : GENERICS. Generics is used to reuse code type in typescript
+
+function addUserId<
+  C extends {
+    name: string;
+    age: number;
+  }
+>(user: C) {
+  const id = Math.floor(Math.random() * 100);
+  return { ...user, id };
+}
+
+let user = addUserId({
+  name: "Tanvir Hossain",
+  age: 20,
+});
+
+console.log(user.id);
+
+// TODO : GENERICS in interface.
+interface APIResponse<C> {
+  status: number;
+  response: string;
+  data: C;
+}
+
+const apiRes: APIResponse<object[]> = {
+  status: 200,
+  response: "success",
+  data: [
+    {
+      name: "Tanvir Hossain",
+      age: 20,
+      department: "CST",
+      isMuslims: true,
+    },
+    {
+      name: "Safiul Islam",
+      age: 21,
+      department: "CST",
+      isMuslims: true,
+    },
+  ],
+};
+
+function reverseArrayItems<C>(items: C[]): C[] {
+  const resultOfReverse = [];
+  for (let i = items.length - 1; i >= 0; i--) {
+    resultOfReverse.push(items[i]);
+  }
+  return resultOfReverse;
+}
+
+console.log(reverseArrayItems<object>(apiRes.data));
+
+// ENUM
+enum responseType {
+  SUCCESS,
+  FORBIDDEN,
+  FAILURE,
+  UNAUTHORIZED,
+}
+
+interface apiResponse {
+  status: number;
+  res: responseType;
+}
+
+const apiResp: apiResponse = {
+  status: 200,
+  res: responseType.UNAUTHORIZED,
+};
+
+console.log(apiResp);
+
+// TODO : TUPLE
+
+// !tuple is nothing but a array elements signature or you can say fixed the array elements with their type. In a simple word
+
+let a: [string, number, object, boolean, string] = [
+  "Hello world",
+  404,
+  { name: "typescript", isProgrammingLanguage: true },
+  true,
+  "Called: Js superset",
+];
+
+console.log(a);
